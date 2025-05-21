@@ -7,6 +7,7 @@ This repository integrates the Unified Planning Framework (UPF) into the ROS 2 e
 ## Install and building
 
 ```
+$ sudo apt-get install ros-humble-qt-gui-cpp ros-humble-gui-cpp
 $ pip install --pre unified-planning[pyperplan,tamer]
 $ pip install ConfigSpace
 $ pip install typing_extensions==4.7.1 --upgrade
@@ -56,6 +57,23 @@ Check with :
 ```
 $ cd unified-planning
 $ bash run_tests.sh
+```
+
+## Docker
+
+A `Dockerfile` is provided in the repository to build a containerized environment for UPF4ROS2. This can be useful to ensure all dependencies are correctly installed and the development environment is reproducible.
+
+To build the Docker image:
+
+```
+$ cd <upf_workspace>/src/UPF4ROS2
+$ docker build -t upf4ros2 .
+```
+
+To run the container:
+
+```
+docker run -it upf4ros2
 ```
 
 ## Usage
