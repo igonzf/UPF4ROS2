@@ -7,7 +7,7 @@ This repository integrates the Unified Planning Framework (UPF) into the ROS 2 e
 ## Install and building
 
 ```
-$ sudo apt-get install ros-humble-qt-gui-cpp ros-humble-gui-cpp
+$ sudo apt-get install ros-<ROS-DISTRO>-qt-gui-cpp ros-<ROS-DISTRO>-gui-cpp
 $ pip install --pre unified-planning[pyperplan,tamer]
 $ pip install ConfigSpace
 $ pip install typing_extensions==4.7.1 --upgrade
