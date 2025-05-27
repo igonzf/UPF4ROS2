@@ -45,11 +45,11 @@ public:
 
   std::optional<plansys2_msgs::msg::Plan> getPlan(
     const std::string & domain, const std::string & problem,
-    const std::string & node_namespace = "");
+    const std::string & node_namespace = "", const rclcpp::Duration solver_timeout = 15s) override;
 
-  bool is_valid_domain(
+  bool isDomainValid(
     const std::string & domain,
-    const std::string & node_namespace = "");
+    const std::string & node_namespace = "") override;
 };
 
 }  // namespace plansys2

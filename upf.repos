@@ -1,21 +1,5 @@
 repositories:
-  unified-planning:
-    type: git
-    url: https://github.com/aiplan4eu/unified-planning.git
-    version: master
-  up-tamer:
-    type: git
-    url: https://github.com/aiplan4eu/up-tamer.git
-    version: master
-  up-pyperplan:
-    type: git
-    url: https://github.com/aiplan4eu/up-pyperplan.git
-    version: master
   ros2_planning_system:
     type: git
     url: https://github.com/PlanSys2/ros2_planning_system.git
-    version: humble-devel
-  cascade_lifecycle:
-    type: git
-    url: https://github.com/fmrico/cascade_lifecycle.git
-    version: humble-devel
+    version: jazzy-devel

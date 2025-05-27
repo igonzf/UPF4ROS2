@@ -33,7 +33,7 @@ namespace plansys2
 
 using namespace std::chrono_literals;
 
-UPFPlanSolver::UPFPlanSolver()
+plansys2::UPFPlanSolver::UPFPlanSolver()
 {
 }
 
@@ -91,7 +91,7 @@ void UPFPlanSolver::configure(
 std::optional<plansys2_msgs::msg::Plan>
 UPFPlanSolver::getPlan(
   const std::string & domain, const std::string & problem,
-  const std::string & node_namespace)
+  const std::string & node_namespace, rclcpp::Duration timeout)
 {
   if (system(nullptr) == 0) {
     return {};
@@ -164,7 +164,7 @@ UPFPlanSolver::getPlan(
 }
 
 bool
-UPFPlanSolver::is_valid_domain(
+UPFPlanSolver::isDomainValid(
   const std::string & domain,
   const std::string & node_namespace)
 {

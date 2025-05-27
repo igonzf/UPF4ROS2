@@ -4,19 +4,33 @@
 
 This repository integrates the Unified Planning Framework (UPF) into the ROS 2 ecosystem, providing a modular and standardized solution for automated planning in robotic systems. This project is part of the European initiative AIPlan4EU, which aims to develop automated planning tools that are accessible and applicable across different engineering domains.
 
-## Install and building
+## Install and building (ROS 2 Jazzy)
 
 ```
-$ sudo apt-get install ros-humble-qt-gui-cpp ros-humble-gui-cpp
-$ pip install --pre unified-planning[pyperplan,tamer]
-$ pip install ConfigSpace
-$ pip install typing_extensions==4.7.1 --upgrade
-$ cd <upf_workspace>
-$ cd src
-$ git clone https://github.com/PlanSys2/UPF4ROS2.git
-$ vcs import . < UPF4ROS2/upf.repos
-$ cd ..
-$ colcon build --symlink-install
+sudo apt update
+sudo apt install \
+  ros-jazzy-behaviortree-cpp-v3 \
+  ros-jazzy-test-msgs \
+  ros-jazzy-cascade-lifecycle-msgs \
+  ros-jazzy-rclcpp-cascade-lifecycle \
+  python3-pip python3-colcon-common-extensions
+
+``` 
+
+```
+pip install --upgrade pip setuptools
+pip install git+https://github.com/aiplan4eu/unified-planning.git
+pip install git+https://github.com/aiplan4eu/up-pyperplan.git
+pip install git+https://github.com/aiplan4eu/up-tamer.git
+pip install ConfigSpace
+pip install typing_extensions==4.7.1
+
+cd <upf_workspace>
+cd src
+git clone https://github.com/PlanSys2/UPF4ROS2.git
+vcs import . < UPF4ROS2/upf.repos
+cd ..
+colcon build
 ```
 
 ### Install UPF from sources
@@ -57,23 +71,6 @@ Check with :
 ```
 $ cd unified-planning
 $ bash run_tests.sh
-```
-
-## Docker
-
-A `Dockerfile` is provided in the repository to build a containerized environment for UPF4ROS2. This can be useful to ensure all dependencies are correctly installed and the development environment is reproducible.
-
-To build the Docker image:
-
-```
-$ cd <upf_workspace>/src/UPF4ROS2
-$ docker build -t upf4ros2 .
-```
-
-To run the container:
-
-```
-docker run -it upf4ros2
 ```
 
 ## Usage

@@ -22,7 +22,6 @@ setup(
     maintainer_email='fmrico@gmail.com',
     description='ROS 2 Support for UPF',
     license='Apache License, Version 2.0',
-    tests_require=['pytest'],
     entry_points={
         'console_scripts': [
             'upf4ros2_main = upf4ros2.upf4ros2_main:main'

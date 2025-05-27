@@ -102,7 +102,7 @@ TEST(upf_plan_solver, check_1_ok_domain)
   auto planner = std::make_shared<plansys2::UPFPlanSolver>();
   planner->configure(node, "UPF");
 
-  bool result = planner->is_valid_domain(domain_str, "check_1_ok_domain");
+  bool result = planner->isDomainValid(domain_str, "check_1_ok_domain");
 
   ASSERT_TRUE(result);
 }
@@ -120,7 +120,7 @@ TEST(upf_plan_solver, check_2_error_domain)
   auto planner = std::make_shared<plansys2::UPFPlanSolver>();
   planner->configure(node, "UPF");
 
-  bool result = planner->is_valid_domain(domain_str, "check_2_error_domain");
+  bool result = planner->isDomainValid(domain_str, "check_2_error_domain");
 
   ASSERT_FALSE(result);
 }
