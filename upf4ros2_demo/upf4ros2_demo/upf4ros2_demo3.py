@@ -39,17 +39,17 @@ class UPF4ROS2DemoNode(Node):
         self._ros2_interface_reader = ROS2InterfaceReader()
 
         self._get_problem = self.create_client(
-            GetProblem, 'upf4ros2/get_problem')
+            GetProblem, 'upf4ros2/srv/get_problem')
         self._new_problem = self.create_client(
-            NewProblem, 'upf4ros2/new_problem')
+            NewProblem, 'upf4ros2/srv/new_problem')
         self._add_fluent = self.create_client(
-            AddFluent, 'upf4ros2/add_fluent')
+            AddFluent, 'upf4ros2/srv/add_fluent')
         self._add_action = self.create_client(
-            AddAction, 'upf4ros2/add_action')
+            AddAction, 'upf4ros2/srv/add_action')
         self._add_object = self.create_client(
-            AddObject, 'upf4ros2/add_object')
+            AddObject, 'upf4ros2/srv/add_object')
         self._set_initial_value = self.create_client(
-            SetInitialValue, 'upf4ros2/set_initial_value')
+            SetInitialValue, 'upf4ros2/srv/set_initial_value')
         self._add_goal = self.create_client(
             AddGoal, 'upf4ros2/add_goal')
         self._plan_one_shot_client_srv = self.create_client(
