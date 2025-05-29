@@ -20,31 +20,33 @@ from upf_msgs.srv import (
 from simple_node import Node
 
 
-class CheckWpAction(Node):
+class CollectAction(Node):
 
     def __init__(self):
-        super().__init__('upf4ros2_check_wp_action')
+        super().__init__('upf4ros2_collect_action')
 
         self._problem_name = 'test'
 
-        self._userType = shortcuts.UserType('location')
-        self._fluent = model.Fluent(
-            "wp_checked",
+        self._userType_location = shortcuts.UserType('location')
+        self._userType_crop = shortcuts.UserType('crop')
+        self._fluent_collected = model.Fluent(
+            "collected",
             shortcuts.BoolType(),
-            object=self._userType)
-        self._fluent_robot_at = model.Fluent(
-            "robot_at", shortcuts.BoolType(), object=self._userType)
+            [model.Parameter('c', self._userType_crop)])
+        
+        self._fluent_is_mature = model.Fluent(
+            "is_mature", shortcuts.BoolType(), [model.Parameter('c', self._userType_crop)])
 
         self._ros2_interface_writer = ROS2InterfaceWriter()
         self._ros2_interface_reader = ROS2InterfaceReader()
 
         self._get_problem = self.create_client(
-            GetProblem, 'upf4ros2/get_problem')
+            GetProblem, 'upf4ros2/srv/get_problem')
         self._set_initial_value = self.create_client(
             SetInitialValue, 'upf4ros2/srv/set_initial_value')
 
         self.create_service(
-            CallAction, 'check_wp', self.__execute_callback)
+            CallAction, 'collect', self.__execute_callback)
 
     def get_problem(self):
         """ get actual state of the problem
@@ -96,21 +98,26 @@ class CheckWpAction(Node):
         Returns:
             CallAction.Response: response with the result of the action
         """
-        problem = self._ros2_interface_reader.convert(self.get_problem())
+        #self.get_logger().info("entra en collect")
+        # problem = self._ros2_interface_reader.convert(self.get_problem())
+        #self.get_logger().info(f'{request}')
 
-        wp = request.parameters[0].symbol_atom[0]
-        l1 = model.Object(wp, self._userType)
+        crop = request.parameters[0].symbol_atom[0]
+        c = model.Object(crop, self._userType_crop)
 
-        if str(problem.initial_values[self._fluent_robot_at(l1)]) == 'true':
+        # self.get_logger().info(f'initial values: {problem.initial_values}')
+        # self.get_logger().info(f'is_mature: {problem.initial_values[self._fluent_is_mature(c)]}')
 
-            self.get_logger().info("Starting action " + request.action_name)
-            self.get_logger().info("Waypoint " + str(wp) + " checked.")
+        # if str(problem.initial_values[self._fluent_is_mature(c)]) == 'true':
 
-            self.set_initial_value(self._fluent, l1, True)
-            response.result = True
-        else:
-            self.get_logger().info("Cannot check wp because the wp was not accesible.")
-            response.result = False
+        self.get_logger().info("Starting action " + request.action_name)
+        self.get_logger().info(str(crop) + " collected.")
+
+        self.set_initial_value(self._fluent_collected, c, True)
+        response.result = True
+        # else:
+        #     self.get_logger().info("Cannot collect "+str(crop)+" because the is not madure.")
+        #     response.result = False
 
         return response
 
@@ -118,7 +125,7 @@ class CheckWpAction(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    check_wp_action = CheckWpAction()
+    check_wp_action = CollectAction()
 
     check_wp_action.join_spin()
 

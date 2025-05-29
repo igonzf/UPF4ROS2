@@ -53,7 +53,7 @@ class NavigationAction(Node):
             '/navigate_to_pose')
 
         self._set_initial_value = self.create_client(
-            SetInitialValue, 'upf4ros2/set_initial_value')
+            SetInitialValue, 'upf4ros2/srv/set_initial_value')
 
         self.create_service(
             CallAction, 'move', self.__execute_callback)
@@ -135,6 +135,7 @@ class NavigationAction(Node):
             self.get_logger().info("Goal to " + str(wp) + " done")
             self.set_initial_value(self._fluent, l1, False)
             self.set_initial_value(self._fluent, l2, True)
+
             response.result = True
         else:
             self.get_logger().info("Goal to " + str(wp) + " was rejected!")

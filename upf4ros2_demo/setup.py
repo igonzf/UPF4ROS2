@@ -31,8 +31,10 @@ setup(
             'upf4ros2_demo1_bash = upf4ros2_demo.upf4ros2_demo1_bash:main',
             'upf4ros2_demo2 = upf4ros2_demo.upf4ros2_demo2:main',
             'upf4ros2_demo3 = upf4ros2_demo.upf4ros2_demo3:main',
+            'upf4ros2_demo3_harvest = upf4ros2_demo.upf4ros2_demo3_harvest:main',
             'upf4ros2_navigation_action = upf4ros2_demo.upf4ros2_navigation_action:main',
-            'upf4ros2_check_wp_action = upf4ros2_demo.upf4ros2_check_wp_action:main'
+            'upf4ros2_check_wp_action = upf4ros2_demo.upf4ros2_check_wp_action:main',
+            'upf4ros2_collect_action = upf4ros2_demo.upf4ros2_collect_action:main'
         ],
     },
 )
