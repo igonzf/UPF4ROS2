@@ -148,6 +148,15 @@ There are two alternatives:
 
 - Replanning case: one of the waypoints is not reachable and it is necessary to replan. Illustrated in this [video](https://youtu.be/UJncg7GPCro)
 
+### [Demo 3 - Harvest](https://youtu.be/21oZHhl7kcA)
+
+This demo consists of creating the problem from a ROS 2 node to navigate a crop field to perform a harvest collection mision.
+For run this demo I used the simulated Leo Rover robot in Gazebo Ignition Fortress from this [repo](https://github.com/luispri2001/gps_ignition_simulation)
+
+`$ ros2 launch upf4ros2 upf4ros2.launch.py`
+
+`$ ros2 launch upf4ros2_demo upf4ros2_demo3_harvest.launch.py`
+
 ## Acknowledgments
 
 <img src="https://www.aiplan4eu-project.eu/wp-content/uploads/2021/07/euflag.png" width="60" height="40">
