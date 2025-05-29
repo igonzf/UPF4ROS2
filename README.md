@@ -7,7 +7,19 @@ This repository integrates the Unified Planning Framework (UPF) into the ROS 2 e
 ## Install and building
 
 ```
-$ sudo apt-get install ros-humble-qt-gui-cpp ros-humble-gui-cpp
+sudo apt update
+sudo apt install \
+  ros-humble-behaviortree-cpp-v3 \
+  ros-humble-test-msgs \
+  ros-humble-qt-gui-cpp \
+  ros-humble-rqt-gui-cpp \
+  ros-humble-navigation2 \
+  ros-humble-nav2-bringup \
+  python3-pip python3-colcon-common-extensions
+
+```
+
+```
 $ pip install --pre unified-planning[pyperplan,tamer]
 $ pip install ConfigSpace
 $ pip install typing_extensions==4.7.1 --upgrade
@@ -88,9 +100,9 @@ docker run -it upf4ros2
     - `/upf4ros2/add_fluent` `[upf_msgs/srv/AddFluent]`
     - `/upf4ros2/add_goal` `[upf_msgs/srv/AddGoal]`
     - `/upf4ros2/add_object` `[upf_msgs/srv/AddObject]`
-    - `/upf4ros2/new_problem` [upf_msgs/srv/NewProblem]`
-    - `/upf4ros2/set_initial_value` [upf_msgs/srv/SetInitialValue]`
-    - `/upf4ros2/set_problem` [upf_msgs/srv/SetProblem]`
+    - `/upf4ros2/new_problem` `[upf_msgs/srv/NewProblem]`
+    - `/upf4ros2/set_initial_value` `[upf_msgs/srv/SetInitialValue]`
+    - `/upf4ros2/set_problem` `[upf_msgs/srv/SetProblem]`
   - Actions:
     - `/upf4ros2/planOneShotPDDL` `[upf_msgs/action/PDDLPlanOneShot]`
     - `/upf4ros2/planOneShot` `[upf_msgs/action/PlanOneShot]`

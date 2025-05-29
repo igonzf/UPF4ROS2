@@ -19,3 +19,7 @@ repositories:
     type: git
     url: https://github.com/fmrico/cascade_lifecycle.git
     version: humble-devel
+  simple_node:
+    type: git
+    url: https://github.com/uleroboticsgroup/simple_node.git
+    version: main
