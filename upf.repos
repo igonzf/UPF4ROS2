@@ -3,3 +3,7 @@ repositories:
     type: git
     url: https://github.com/PlanSys2/ros2_planning_system.git
     version: jazzy-devel
+  simple_node:
+    type: git
+    url: https://github.com/uleroboticsgroup/simple_node.git
+    version: main

@@ -13,6 +13,8 @@ sudo apt install \
   ros-jazzy-test-msgs \
   ros-jazzy-cascade-lifecycle-msgs \
   ros-jazzy-rclcpp-cascade-lifecycle \
+  ros-jazzy-navigation2 \
+  ros-jazzy-nav2-bringup \
   python3-pip python3-colcon-common-extensions
 
 ``` 
