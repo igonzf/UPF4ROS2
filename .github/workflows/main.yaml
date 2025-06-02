@@ -15,16 +15,30 @@ env:
 
 jobs:
   build-and-test:
-    runs-on: ${{ matrix.os }}
-    container:
-      image: osrf/ros:humble-desktop
-    strategy:
-      matrix:
-        os: [ubuntu-22.04]
-      fail-fast: false
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Set up ROS 2 sources and key
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl gnupg lsb-release
+          sudo curl -fsSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key | \
+          gpg --dearmor -o /usr/share/keyrings/ros-archive-keyring.gpg && \
+          echo "deb [arch=amd64 signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" \
+          > /etc/apt/sources.list.d/ros2.list && \
+          apt-get update
+      - name: Install ROS 2 Humble and tools
+        run: |
+          sudo apt install -y ros-humble-desktop \
+            ros-humble-behaviortree-cpp-v3 \
+            ros-humble-test-msgs \
+            ros-humble-qt-gui-cpp \
+            ros-humble-rqt-gui-cpp \
+            ros-humble-navigation2 \
+            ros-humble-nav2-bringup \
+            python3-pip python3-colcon-common-extensions \
+            python3-vcstool python3-pytest python3-colcon-coveragepy-result libfl-dev
       - name: Install deps
         run: sudo apt-get update && sudo apt-get install -y wget python3-vcstool python3-pytest python3-colcon-coveragepy-result libfl-dev pip && pip install ConfigSpace && pip install typing_extensions==4.7.1 --upgrade
       - name: fix pytest name
