@@ -84,7 +84,7 @@ jobs:
                 "parallel-workers" : 4
               }
             }
-          colcon-extra-args: "--event-handlers console_direct+ --return-code-on-test-failure"
+          colcon-extra-args: "--return-code-on-test-failure"
           colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/main/index.yaml
       - name: Codecov
         uses: codecov/codecov-action@v1.2.1
