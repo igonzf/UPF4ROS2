@@ -42,25 +42,6 @@ install(FILES plansys2_upf_plan_solver_plugin.xml
   DESTINATION share/${PROJECT_NAME}
 )
 
-add_executable(upf_planner_test_node src/plansys2_upf_plan_solver/test_upf.cpp)
-ament_target_dependencies(upf_planner_test_node
-  rclcpp
-  rclcpp_lifecycle
-  ament_index_cpp
-  plansys2_core
-  rclcpp_action
-  upf_msgs
-)
-
-target_link_libraries(upf_planner_test_node
-  ${PROJECT_NAME}
-)
-
-install(TARGETS
-  upf_planner_test_node
-  DESTINATION lib/${PROJECT_NAME}
-)
-
 
 
 install(TARGETS
