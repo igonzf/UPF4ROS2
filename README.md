@@ -169,6 +169,21 @@ For run this demo I used the simulated Leo Rover robot in Gazebo Ignition Fortre
 
 `$ ros2 launch upf4ros2_demo upf4ros2_demo3_harvest.launch.py`
 
+## Metrics
+
+| demo             | planner  | mean_time_s         | std_time_s            | num_runs |
+| ---------------- | -------- | ------------------- | --------------------- | -------- |
+| Demo 1 - PDDL    | UPF      | 0.06891             | 0.0007781031065639372 | 10       |
+| Demo 1 - PDDL    | UPF4ROS2 | 0.08873             | 0.03617178304823925   | 10       |
+| Demo 1           | UPF      | 0.04425             | 0.0009348202441586781 | 10       |
+| Demo 1           | UPF4ROS2 | 0.1766              | 0.027368960520998957  | 10       |
+| Demo 2           | UPF      | 0.04439             | 0.0003478505426185197 | 10       |
+| Demo 2           | UPF4ROS2 | 0.18429             | 0.008679023242533935  | 10       |
+| Demo 3           | UPF      | 0.04703             | 0.001299615327702778  | 10       |
+| Demo 3           | UPF4ROS2 | 0.22318             | 0.0221844690418019    | 10       |
+| Demo 3 - Harvest | UPF      | 0.05125999999999999 | 0.004771023649770213  | 10       |
+| Demo 3 - Harvest | UPF4ROS2 | 0.30883             | 0.05294154113527276   | 10       |
+
 ## Acknowledgments
 
 <img src="https://www.aiplan4eu-project.eu/wp-content/uploads/2021/07/euflag.png" width="60" height="40">
