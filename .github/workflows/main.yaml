@@ -72,10 +72,6 @@ jobs:
           sudo apt install -y python3-rosdep
           sudo rosdep init || true
           rosdep update
-      - name: Setup ROS 2
-        uses: ros-tooling/setup-ros@0.3.3
-        with:
-          required-ros-distributions: humble
       - name: build and test
         uses: ros-tooling/action-ros-ci@0.2.5
         with:
